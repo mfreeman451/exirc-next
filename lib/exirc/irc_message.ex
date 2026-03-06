@@ -1,9 +1,13 @@
 defmodule ExIRC.Message do
-  defstruct server:  '',
-            nick:    '',
-            user:    '',
-            host:    '',
-            ctcp:    nil,
-            cmd:     '',
-            args:    []
+  @moduledoc """
+  Represents a parsed IRC message.
+  """
+  @type t :: %__MODULE__{}
+  defstruct server: ~c"",
+            nick: ~c"",
+            user: ~c"",
+            host: ~c"",
+            ctcp: nil,
+            cmd: ~c"",
+            args: []
 end

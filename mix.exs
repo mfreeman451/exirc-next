@@ -3,43 +3,59 @@ defmodule ExIRC.Mixfile do
 
   def project do
     [
-      app: :exirc,
-      version: "2.0.0",
-      elixir: "~> 1.6",
-      description: "An IRC client library for Elixir.",
+      app: :exirc_next,
+      version: "3.0.1",
+      elixir: "~> 1.17",
+      description: "A modern IRC client library for Elixir. Fork of exirc, actively maintained.",
       package: package(),
+      source_url: "https://github.com/mfreeman451/exirc",
+      homepage_url: "https://github.com/mfreeman451/exirc",
+      docs: [
+        main: "ExIRC",
+        extras: ["README.md", "CHANGELOG.md"]
+      ],
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: [
-        coveralls: :test,
-        "coveralls.detail": :test,
-        "coveralls.html": :test,
-        "coveralls.post": :test
+      dialyzer: [
+        plt_add_apps: [:ex_unit]
       ],
       deps: deps()
     ]
   end
 
-  # Configuration for the OTP application
+  def cli do
+    [
+      preferred_envs: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.html": :test,
+        "coveralls.post": :test
+      ]
+    ]
+  end
+
   def application do
-    [mod: {ExIRC.App, []}, applications: [:ssl, :crypto, :inets]]
+    [mod: {ExIRC.App, []}, extra_applications: [:logger, :ssl, :crypto, :inets]]
   end
 
   defp package do
     [
       files: ["lib", "mix.exs", "README.md", "LICENSE", "CHANGELOG.md"],
-      maintainers: ["Paul Schoenfelder", "Théophile Choutri"],
+      maintainers: ["Matt Freeman"],
       licenses: ["MIT"],
       links: %{
-        "GitHub" => "https://github.com/bitwalker/exirc",
-        "Home Page" => "http://bitwalker.org/exirc"
+        "GitHub" => "https://github.com/mfreeman451/exirc"
       }
     ]
   end
 
   defp deps do
     [
-      {:ex_doc, "~> 0.22", only: :dev},
-      {:excoveralls, "~> 0.13", only: :test}
+      {:ex_doc, "~> 0.35", only: :dev, runtime: false},
+      {:excoveralls, "~> 0.18", only: :test},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:mix_audit, "~> 2.1", only: [:dev, :test], runtime: false},
+      {:sobelow, "~> 0.13", only: [:dev, :test], runtime: false}
     ]
   end
 end
