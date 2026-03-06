@@ -1,25 +1,21 @@
-# ExIRC
+# ExIRC-next
 
-[![Build Status](https://travis-ci.org/bitwalker/exirc.svg?branch=master)](https://travis-ci.org/bitwalker/exirc)
-![.github/workflows/tests.yaml](https://github.com/bitwalker/exirc/workflows/.github/workflows/tests.yaml/badge.svg)
-[![Hex.pm Version](http://img.shields.io/hexpm/v/exirc.svg?style=flat)](https://hex.pm/packages/exirc)
-
-ExIRC is a IRC client library for Elixir projects. It aims to have a clear, well
-documented API, with the minimal amount of code necessary to allow you to connect and
-communicate with IRC servers effectively. It aims to implement the full RFC2812 protocol,
+ExIRC-next is a IRC client library for Elixir projects and is an update to the original ExIRC library. 
+It aims to have a clear, welldocumented API, with the minimal amount of code necessary to allow you to 
+connect and communicate with IRC servers effectively. It aims to implement the full RFC2812 protocol,
 and relevant parts of RFC1459.
 
 ## Getting Started
 
-Add ExIRC as a dependency to your project in mix.exs, and add it as an application:
+Add ExIRC-next as a dependency to your project in mix.exs, and add it as an application:
 
 ```elixir
   defp deps do
-    [{:exirc, "~> x.x.x"}]
+    [{:exirc-next, "~> x.x.x"}]
   end
 
   defp application do
-    [applications: [:exirc],
+    [applications: [:exirc-next],
      ...]
   end
 ```
