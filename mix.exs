@@ -8,6 +8,12 @@ defmodule ExIRC.Mixfile do
       elixir: "~> 1.17",
       description: "A modern IRC client library for Elixir. Fork of exirc, actively maintained.",
       package: package(),
+      source_url: "https://github.com/mfreeman451/exirc",
+      homepage_url: "https://github.com/mfreeman451/exirc",
+      docs: [
+        main: "ExIRC",
+        extras: ["README.md", "CHANGELOG.md"]
+      ],
       test_coverage: [tool: ExCoveralls],
       dialyzer: [
         plt_add_apps: [:ex_unit]
@@ -37,7 +43,7 @@ defmodule ExIRC.Mixfile do
       maintainers: ["Matt Freeman"],
       licenses: ["MIT"],
       links: %{
-        "GitHub" => "https://github.com/mfreeman/exirc"
+        "GitHub" => "https://github.com/mfreeman451/exirc"
       }
     ]
   end

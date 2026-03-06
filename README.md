@@ -1,6 +1,6 @@
 # ExIRC Next
 
-[![CI](https://github.com/mfreeman/exirc/workflows/CI/badge.svg)](https://github.com/mfreeman/exirc/actions)
+[![CI](https://github.com/mfreeman451/exirc/workflows/CI/badge.svg)](https://github.com/mfreeman451/exirc/actions)
 [![Hex.pm Version](http://img.shields.io/hexpm/v/exirc_next.svg?style=flat)](https://hex.pm/packages/exirc_next)
 
 A modern IRC client library for Elixir projects. Actively maintained fork of [bitwalker/exirc](https://github.com/bitwalker/exirc).
