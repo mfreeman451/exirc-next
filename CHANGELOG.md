@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.2] - 2026-03-05
+
+### Fixed
+* Removed stale `hackney` and 10 other unused transitive deps from lockfile (security audit fix)
+* Added Makefile with `make lint`, `make test`, `make publish` targets
+
 ## [3.0.1] - 2026-03-05
 
 ### Fixed
