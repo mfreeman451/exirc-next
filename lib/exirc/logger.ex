@@ -1,29 +1,31 @@
 defmodule ExIRC.Logger do
   @moduledoc """
-  A simple abstraction of :error_logger
+  A simple logging abstraction wrapping Elixir's Logger.
   """
 
+  require Logger
+
   @doc """
-  Log an informational message report
+  Log an informational message.
   """
   @spec info(binary) :: :ok
   def info(msg) do
-    :error_logger.info_report String.to_charlist(msg)
+    Logger.info(msg)
   end
 
   @doc """
-  Log a warning message report
+  Log a warning message.
   """
   @spec warning(binary) :: :ok
   def warning(msg) do
-    :error_logger.warning_report String.to_charlist("#{IO.ANSI.yellow()}#{msg}#{IO.ANSI.reset()}")
+    Logger.warning(msg)
   end
 
   @doc """
-  Log an error message report
+  Log an error message.
   """
   @spec error(binary) :: :ok
   def error(msg) do
-    :error_logger.error_report String.to_charlist("#{IO.ANSI.red()}#{msg}#{IO.ANSI.reset()}")
+    Logger.error(msg)
   end
 end

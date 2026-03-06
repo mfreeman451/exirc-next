@@ -64,7 +64,7 @@ defmodule ExIRC do
   Start a new ExIRC client under the ExIRC supervisor
   """
   @spec start_client!() :: DynamicSupervisor.on_start_child()
-  def start_client!() do
+  def start_client! do
     DynamicSupervisor.start_child(:exirc, {TemporaryClient, owner: self()})
   end
 
