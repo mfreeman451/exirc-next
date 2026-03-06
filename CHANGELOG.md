@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.1] - 2026-03-05
+
+### Fixed
+* Fixed ExDoc warnings for hidden `ClientState.t()` type references in public specs
+* Fixed GitHub username in package links and README badges
+
 ## [3.0.0] - 2026-03-05
 
 ### Changed

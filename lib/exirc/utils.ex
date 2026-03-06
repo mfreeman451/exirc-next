@@ -137,8 +137,7 @@ defmodule ExIRC.Utils do
   If an empty list is provided, do nothing, otherwise parse CHANTYPES,
   NETWORK, and PREFIX parameters for relevant data.
   """
-  @spec isup(parameters :: list(binary), state :: ExIRC.Client.ClientState.t()) ::
-          ExIRC.Client.ClientState.t()
+  @spec isup(parameters :: list(binary), state :: map()) :: map()
   def isup([], state), do: state
 
   def isup([param | rest], state) do

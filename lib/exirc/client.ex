@@ -348,7 +348,7 @@ defmodule ExIRC.Client do
   @doc """
   Called when GenServer initializes the client
   """
-  @spec init(list(any) | []) :: {:ok, ClientState.t()}
+  @spec init(keyword()) :: {:ok, map()}
   def init(options \\ []) do
     autoping = Keyword.get(options, :autoping, true)
     debug = Keyword.get(options, :debug, false)
