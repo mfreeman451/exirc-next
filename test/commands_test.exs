@@ -45,4 +45,9 @@ defmodule ExIRC.CommandsTest do
     expected = <<"INVITE testuser #testchan", ?\r, ?\n>>
     assert expected == invite!("testuser", "#testchan") |> IO.iodata_to_binary()
   end
+
+  test "NAMES command includes channel name" do
+    expected = <<"NAMES #testchan", ?\r, ?\n>>
+    assert expected == names!("#testchan") |> IO.iodata_to_binary()
+  end
 end

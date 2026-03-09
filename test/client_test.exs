@@ -133,6 +133,43 @@ defmodule ExIRC.ClientTest do
     assert_receive {:mentioned, ^chat_message, ^expected_senderinfo, "#testchannel"}, 10
   end
 
+  test "RPL_NAMREPLY sends names_list event with structured list preserving prefixes" do
+    state = get_state_with_channels()
+
+    msg = %ExIRC.Message{
+      cmd: @rpl_namereply,
+      args: ["tester", "=", "#testchannel", "@op_user +voice_user regular_user"]
+    }
+
+    {:noreply, _new_state} = Client.handle_data(msg, state)
+    assert_receive {:names_list, "#testchannel", ["@op_user", "+voice_user", "regular_user"]}, 10
+  end
+
+  test "RPL_ENDOFNAMES sends end_of_names event" do
+    state = get_state_with_channels()
+
+    msg = %ExIRC.Message{
+      cmd: @rpl_endofnames,
+      args: ["tester", "#testchannel", "End of /NAMES list"]
+    }
+
+    {:noreply, _new_state} = Client.handle_data(msg, state)
+    assert_receive {:end_of_names, "#testchannel"}, 10
+  end
+
+  defp get_state_with_channels do
+    channels =
+      ExIRC.Channels.init()
+      |> ExIRC.Channels.join("#testchannel")
+
+    %ExIRC.Client.ClientState{
+      nick: "tester",
+      logged_on?: true,
+      event_handlers: [{self(), Process.monitor(self())}],
+      channels: channels
+    }
+  end
+
   defp get_state do
     %ExIRC.Client.ClientState{
       nick: "tester",
