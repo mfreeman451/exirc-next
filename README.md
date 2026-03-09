@@ -33,7 +33,7 @@ defmodule MyBot do
   use GenServer
 
   defmodule State do
-    defstruct host: "irc.libera.chat",
+    defstruct host: "irc.choopa.net",
               port: 6667,
               pass: "",
               nick: "mybot",
@@ -96,7 +96,7 @@ defmodule ExampleConnectionHandler do
   use GenServer
 
   defmodule State do
-    defstruct host: "irc.libera.chat",
+    defstruct host: "irc.choopa.net",
               port: 6667,
               pass: "",
               nick: "mybot",
