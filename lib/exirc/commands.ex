@@ -274,7 +274,7 @@ defmodule ExIRC.Commands do
   @doc """
   Sends a command to the server to get the list of names back
   """
-  def names!(_channel), do: command!([~c"NAMES"])
+  def names!(channel), do: command!([~c"NAMES ", channel])
 
   @doc """
   Send notice to channel or user

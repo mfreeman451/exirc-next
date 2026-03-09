@@ -926,16 +926,32 @@ defmodule ExIRC.Client do
         [channel_type, channel, names] -> {nil, channel_type, channel, names}
       end
 
+    names_list = String.split(names, " ", trim: true)
+
     channels =
       Channels.set_type(
-        Channels.users_join(state.channels, channel, String.split(names, " ", trim: true)),
+        Channels.users_join(state.channels, channel, names_list),
         channel,
         channel_type
       )
 
-    send_event({:names_list, channel, names}, state)
+    send_event({:names_list, channel, names_list}, state)
 
     {:noreply, %{state | channels: channels}}
+  end
+
+  # Called when the server signals the end of a NAMES list
+  def handle_data(%ExIRC.Message{cmd: @rpl_endofnames} = msg, state) do
+    if state.debug?, do: debug("END OF NAMES LIST")
+
+    channel =
+      case msg.args do
+        [_nick, channel, _msg] -> channel
+        [channel, _msg] -> channel
+      end
+
+    send_event({:end_of_names, channel}, state)
+    {:noreply, state}
   end
 
   # Called when our nick has succesfully changed
