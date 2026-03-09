@@ -4,7 +4,7 @@ defmodule ExIRC.Mixfile do
   def project do
     [
       app: :exirc_next,
-      version: "3.0.2",
+      version: "3.1.0",
       elixir: "~> 1.17",
       description: "A modern IRC client library for Elixir. Fork of exirc, actively maintained.",
       package: package(),

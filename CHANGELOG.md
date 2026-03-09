@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.0] - 2026-03-09
+
+### Fixed
+* Fixed `names!/1` command ignoring the channel argument (sent bare `NAMES` instead of `NAMES #channel`)
+
+### Added
+* `{:names_list, channel, names}` event now sends a structured list of nicks with role prefixes preserved (e.g., `["@op_user", "+voice_user", "regular_user"]`)
+* `RPL_ENDOFNAMES` (366) handling — emits `{:end_of_names, channel}` event when the server finishes sending the names list
+* GitHub Actions workflow to automatically publish to Hex on release
+
 ## [3.0.2] - 2026-03-05
 
 ### Fixed
